@@ -11,10 +11,19 @@ use Illuminate\Http\Request;
 class SampleController extends Controller
 {
 
-  public function index(Request $request)
+  function __construct()
   {
+    config(['sample.message' => 'new message']);
+  }
+
+  public function index()
+  {
+    $sample_msg = config('sample.message');
+    $sample_data = config('sample.data');
+
     $data = [
-      'msg' => 'Sample-index',
+      'msg' => $sample_msg,
+      'data' => $sample_data,
     ];
 
     return view('hello.index', $data);

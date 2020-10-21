@@ -17,7 +17,7 @@ class CreatePeopleTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->null()->unique();
             $table->string('mail')->unique();
-            $table->integer('age', 'between:0,100');
+            $table->tinyInteger('age');
             $table->timestamps();
         });
     }

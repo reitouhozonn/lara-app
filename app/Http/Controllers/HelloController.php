@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\person;
 
 class HelloController extends Controller
 {
@@ -11,10 +12,19 @@ class HelloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+     function __construct()
+     {
+       config(['sample.message' => 'new message']);
+     }
+
+    public function index()
     {
+        $sample_msg = config('sample.message');
+        $sample_data = config('sample.data');
+
         $data = [
-          'msg' => $request->hello,
+          'msg' => $sample_msg,
+          'data' => $sample_data,
         ];
 
         return view('hello.index', $data);
