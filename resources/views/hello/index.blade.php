@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>index</title>
+    <style media="screen">
+      th {background-color: red; padding: 10px;}
+      td { background-color: #eee; padding: 10px;}
+    </style>
   </head>
   <body>
     <h1>Hello/Index</h1>

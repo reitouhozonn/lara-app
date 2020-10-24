@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('/hello/', 'HelloController@index');
+Route::get('/hello', 'HelloController@index')->name('hello');
+Route::get('/hello/{msg}', 'HelloController@other');
+// Route::get('/sample', 'Sample\SampleController@index')->name('sample');
+
+
 
 // Route::middleware('hello')->group(function () {
 //   Route::get('/hello', 'HelloController@index');
@@ -30,9 +34,9 @@ Route::get('/hello/', 'HelloController@index');
 // });
 
 
-Route::namespace('Sample')->group(function()
-{
-  Route::get('/sample', 'SampleController@index');
-  Route::get('/sample/other', 'SampleController@other');
-
-});
+// Route::namespace('Sample')->group(function()
+// {
+//   Route::get('/sample', 'SampleController@index');
+//   Route::get('/sample/other', 'SampleController@other');
+//
+// });

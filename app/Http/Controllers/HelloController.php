@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\person;
+use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
 {
@@ -12,19 +13,34 @@ class HelloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     private $fname;
+
+
      function __construct()
      {
-       config(['sample.message' => 'new message']);
+       $this->fname = 'hello.txt';
      }
 
     public function index()
     {
-        $sample_msg = config('sample.message');
-        $sample_data = config('sample.data');
+        $url = Storage::disk('public')->url($this->fname);
+        $size = Storage::disk('public')->size($this->fname);
+        $modified = Storage::disk('public')->lastModified($this->fname);
+
+        $sample_keys = ['url', 'size', 'modified'];
+        $sample_meta = [$url, $size, $modified];
+
+        $result = '<table><tr><th>' . implode('</th><th>',
+        $sample_keys) . '</th></tr>';
+        $result .= '<tr><td>' . implode('</td><td>',
+        $sample_meta) . '</td></tr></table>';
+
+        $sample_data = Storage::disk('public')->get($this->fname);
 
         $data = [
-          'msg' => $sample_msg,
-          'data' => $sample_data,
+          'msg' => $result,
+          'data' => explode(PHP_EOL, $sample_data)
         ];
 
         return view('hello.index', $data);
@@ -96,12 +112,16 @@ class HelloController extends Controller
         //
     }
 
-    public function other(Request $request)
+    public function other($msg)
     {
-      $data = [
-        'msg' => $request->bye,
-      ];
-      return view('hello.index', $data);
+      Storage::disk('public')->delete('bk_' . $this->fname);
+      Storage::disk('public')->copy($this->fname,
+        'bk_' . $this->fname);
+      Storage::disk('local')->delete('bk_' . $this->fname);
+      Storage::disk('local')->move('public/bk_' . $this->fname,
+        'bk_' . $this->fname);
+
+      return redirect()->route('hello');
     }
 
 
