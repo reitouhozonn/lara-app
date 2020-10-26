@@ -43,6 +43,20 @@ return [
 
     'disks' => [
 
+      'ftp' => [
+        'driver' => 'ftp',
+        'host' => 'lara',
+        'username' => 'rala',
+        'password' => 'pass',
+      ],
+
+
+        'logs' => [
+          'driver' => 'local',
+          'root' => storage_path('logs'),
+          'url' => env('APP_URL') . '/storage/logs',
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
