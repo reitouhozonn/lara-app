@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\person;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\MyClasses\MyService;
 
 class HelloController extends Controller
 {
@@ -18,19 +20,38 @@ class HelloController extends Controller
      private $fname;
 
 
-     function __construct()
-     {
-       $this->fname = 'hello.txt';
-     }
+     // function __construct(MyService $myservice)
+     // {
+     //   $myservice = app('App\MyClasses\MyService');
+     // }
 
-    public function index(Request $request, Response $response)
+    public function index($id = -1)
     {
-        $name = $request->query('name');
-        $mail = $request->query('mail');
-        $tel = $request ->query('tel');
-        $msg = $name . ', ' . $mail . ', ' . $tel;
-        $keys = ['名前', 'メール', '電話'];
-        $values = [$name, $mail, $tel];
+      // if ($id >= 0 ) {
+      //   $msg = 'get name like "' . $id . '".';
+      //   $result = DB::table('people')->where('name', 'like', '%' . $id . '%')
+      //     ->get();
+      // }else {
+      //   $msg = 'get people records.';
+      //   $result = DB::table('people')->get();
+      // }
+        $msg = 'get people records.';
+        $first = DB::table('people')->get();
+        // dd($first);
+        // $last = DB::table('people')->orderBy('id', 'desc')->first();
+
+        $data = [
+          'msg' => $msg,
+          'data' => [$first],
+        ];
+
+        return view('hello.index', $data);
+        // $name = $request->query('name');
+        // $mail = $request->query('mail');
+        // $tel = $request ->query('tel');
+        // $msg = $name . ', ' . $mail . ', ' . $tel;
+        // $keys = ['名前', 'メール', '電話'];
+        // $values = [$name, $mail, $tel];
         // $msg = 'please input text:';
         // $keys = [];
         // $values = [];
@@ -48,11 +69,11 @@ class HelloController extends Controller
         //   $request->flash();
         //   return view('hello.index', $data);
 
-        $data = [
-          'msg' => $msg,
-          'keys' => $keys,
-          'values' => $values,
-        ];
+        // $data = [
+        //   'msg' => $msg,
+        //   'keys' => $keys,
+        //   'values' => $values,
+        // ];
       // $dir = '/';
       // $all = Storage::disk('logs')->allfiles($dir);
       //
@@ -60,8 +81,8 @@ class HelloController extends Controller
       //   'msg' => 'DIR:' . $dir,
       //   'data' => $all
       // ];
-      $request->flash();
-      return view('hello.index', $data);
+      // $request->flash();
+      // return view('hello.index', $data);
 
         // $url = Storage::disk('public')->url($this->fname);
         // $size = Storage::disk('public')->size($this->fname);
@@ -177,15 +198,15 @@ class HelloController extends Controller
       //
       //   return redirect()->route('hello');
 
-      $data = [
-        'name' => 'taro',
-        'mail' => 'taro@exsmple',
-        'tel' => '123456789',
-      ];
-
-      $query_str = http_build_query($data);
-      $data['msg'] = $query_str;
-      return redirect()->route('hello', $data);
+      // $data = [
+      //   'name' => 'taro',
+      //   'mail' => 'taro@exsmple',
+      //   'tel' => '123456789',
+      // ];
+      //
+      // $query_str = http_build_query($data);
+      // $data['msg'] = $query_str;
+      // return redirect()->route('hello', $data);
 
 
     }

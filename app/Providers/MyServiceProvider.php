@@ -3,12 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\MyClasses\MyService;
 
-class AppServiceProvider extends ServiceProvider
+class MyServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
@@ -18,11 +17,12 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
+        //
     }
 }
