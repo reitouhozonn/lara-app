@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Person::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->name,
-        'mail' => $faker->unique()->Email,
+        'mail' => $faker->unique()->safeEmail,
         'age'  => $faker->numberBetween($min = 10, $max = 100),
 
     ];

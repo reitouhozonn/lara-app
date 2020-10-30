@@ -25,7 +25,7 @@ class HelloController extends Controller
      //   $myservice = app('App\MyClasses\MyService');
      // }
 
-    public function index($id = -1)
+    public function index(Request $request)
     {
       // if ($id >= 0 ) {
       //   $msg = 'get name like "' . $id . '".';
@@ -35,14 +35,16 @@ class HelloController extends Controller
       //   $msg = 'get people records.';
       //   $result = DB::table('people')->get();
       // }
+        // $ids = explode(',', $id);
+        $id = $request->query('pege');
         $msg = 'get people records.';
-        $first = DB::table('people')->get();
+        $first = Person::paginate(3);
         // dd($first);
         // $last = DB::table('people')->orderBy('id', 'desc')->first();
 
         $data = [
           'msg' => $msg,
-          'data' => [$first],
+          'data' => $first,
         ];
 
         return view('hello.index', $data);
