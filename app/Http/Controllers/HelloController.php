@@ -27,6 +27,25 @@ class HelloController extends Controller
 
     public function index(Request $request)
     {
+
+      $msg = 'show people message';
+      $result = Person::get()->reject(function($person)
+      {
+        return $person->age < 20;
+      });
+
+      $data = [
+        'msg' => $msg,
+        'data' => $result,
+      ];
+
+      return view('hello.index', $data);
+
+
+
+
+
+
       // if ($id >= 0 ) {
       //   $msg = 'get name like "' . $id . '".';
       //   $result = DB::table('people')->where('name', 'like', '%' . $id . '%')
@@ -36,18 +55,18 @@ class HelloController extends Controller
       //   $result = DB::table('people')->get();
       // }
         // $ids = explode(',', $id);
-        $id = $request->query('pege');
-        $msg = 'get people records.';
-        $first = Person::paginate(3);
-        // dd($first);
-        // $last = DB::table('people')->orderBy('id', 'desc')->first();
-
-        $data = [
-          'msg' => $msg,
-          'data' => $first,
-        ];
-
-        return view('hello.index', $data);
+        // $id = $request->query('pege');
+        // $msg = 'get people records.';
+        // $first = Person::paginate(3);
+        // // dd($first);
+        // // $last = DB::table('people')->orderBy('id', 'desc')->first();
+        //
+        // $data = [
+        //   'msg' => $msg,
+        //   'data' => $first,
+        // ];
+        //
+        // return view('hello.index', $data);
         // $name = $request->query('name');
         // $mail = $request->query('mail');
         // $tel = $request ->query('tel');
