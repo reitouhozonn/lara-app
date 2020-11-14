@@ -27,19 +27,33 @@ class HelloController extends Controller
 
     public function index(Request $request)
     {
-
-      $msg = 'show people message';
-      $result = Person::get()->reject(function($person)
-      {
-        return $person->age < 20;
-      });
+      $msg = 'show people record.';
+      $re = Person::get();
+      $fields = Person::get()->fi();
 
       $data = [
-        'msg' => $msg,
-        'data' => $result,
+        'msg' => implode(',', $fields),
+        'data' => $re,
       ];
 
       return view('hello.index', $data);
+
+      // $msg = 'show people message';
+      // $keys = Person::get()->modelkeys();
+      // $even = Person::get()->filter(function($item)
+      // {
+      //   return $item->id % 2 == 0;
+      // });
+      // $map = $even->map(function($item, $key)
+      // {
+      //   return $item->id . ':' . $item->name;
+      // });
+      // $even2 = Person::get()->filter(function($item)
+      // {
+      //   return $item->age % 2 == 0;
+      // });
+      // $result = $even;
+
 
 
 
