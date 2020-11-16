@@ -29,7 +29,7 @@ class HelloController extends Controller
     {
       $msg = 'show people record.';
       $re = Person::get();
-      $fields = Person::get()->fi();
+      $fields = Person::get()->fields();
 
       $data = [
         'msg' => implode(',', $fields),

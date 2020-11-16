@@ -7,13 +7,33 @@ use Illuminate\Database\Eloquent\collection;
 
 class Person extends Model
 {
-
-  public function fi()
+  public function getNameAndIdAttribute()
   {
-    $item = $this->first();
-    return array_keys($item->toArray());
-
+    return $this->name . ' [id=' . $this->id .']';
   }
+
+  public function getNameAndMailAttribute()
+  {
+    return $this->name . ' (' . $this->mail . ')';
+  }
+
+  public function getNameAndAgeAttribute()
+  {
+    return $this->name . '(' . $this->age . ')';
+  }
+
+  public function getAllDataAttribute()
+  {
+    return $this->name . '(' . $this->age . ')'
+      . ' [' . $this->mail . ']';
+  }
+
+
+
+
+
+
+
 
 
 
