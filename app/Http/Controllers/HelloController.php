@@ -141,6 +141,14 @@ class HelloController extends Controller
         // return view('hello.index', $data);
     }
 
+    public function save($id, $name)
+    {
+      $record = Person::find($id);
+      $record->name = $name;
+      $record->save();
+
+      return redirect()->route('hello');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -207,8 +215,26 @@ class HelloController extends Controller
         //
     }
 
-    public function other(Request $request)
+      public function json($id = -1)
+      {
+        if ($id == -1) {
+          return Person::get()->toJson();
+        } else {
+          return Person::find($id)->toJson();
+        }
+
+      }
+
+    public function other()
     {
+      $person = new Person();
+      $person->all_data = ['hanako', 'bbb@example.com', 99];
+      $person->save();
+
+      return redirect()->route('hello');
+
+
+
       // if (Storage::disk('public')->exists('bk_' . $this->fname)) {
       //       Storage::disk('public')->delete('bk_' . $this->fname);
       // }
