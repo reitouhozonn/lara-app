@@ -44,6 +44,25 @@
   <li id="age"></li>
 </ul>
 
+<h2>search!!</h2>
+  <div class="">
+
+    <form action="/hello" method="post">
+      @csrf
+      <input id="find" type="text" name="find" value="{{$input}}">
+      <input type="submit" name="" value="Click">
+    </form>
+  </div>
+  <hr>
+  <table border="1">
+    @foreach($data as $item)
+    <tr>
+      <th>{{ $item->id }}</th>
+      <td>{{ $item->all_data }}</td>
+    </tr>
+    @endforeach
+  </table>
+  <hr>
 
     <!-- <table border="1">
       @foreach($data as $item)

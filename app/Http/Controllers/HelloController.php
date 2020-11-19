@@ -32,6 +32,7 @@ class HelloController extends Controller
       $fields = Person::get()->fields();
 
       $data = [
+        'input' => '',
         'msg' => implode(',', $fields),
         'data' => $re,
       ];
@@ -214,6 +215,22 @@ class HelloController extends Controller
     {
         //
     }
+
+    public function send(Request $request)
+    {
+      $input  = $request->input('find');
+      $msg = 'search: ' . $input;
+      $result = Person::search($input)->get();
+
+      $data = [
+        'input' => $input,
+        'msg' => $msg,
+        'data' => $result,
+      ];
+      return view('hello.index', $data);
+    }
+
+
 
       public function json($id = -1)
       {

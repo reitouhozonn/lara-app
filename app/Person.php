@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\collection;
+// use Laravel\Scout\Searchable;
 
 class Person extends Model
 {
+  // use Searchable;
+
   protected $guarded = ['id'];
 
   // public static $rules = [
