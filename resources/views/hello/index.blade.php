@@ -7,7 +7,7 @@
       th {background-color: red; padding: 10px;}
       td { background-color: #eee; padding: 10px;}
     </style>
-    <link rel="stylesheet" href="/css/main.css">
+    <!-- <link rel="stylesheet" href="/css/main.css"> -->
 
     <script type="text/javascript">
       function doAction() {
@@ -46,7 +46,6 @@
 
 <h2>search!!</h2>
   <div class="">
-
     <form action="/hello" method="post">
       @csrf
       <input id="find" type="text" name="find" value="{{$input}}">

@@ -25,15 +25,17 @@ class HelloController extends Controller
      //   $myservice = app('App\MyClasses\MyService');
      // }
 
-    public function index(Request $request)
+    public function index()
     {
       $msg = 'show people record.';
       $re = Person::get();
       $fields = Person::get()->fields();
 
+      Person::get(['*'])->searchable();
+
       $data = [
         'input' => '',
-        'msg' => implode(',', $fields),
+        'msg' => $msg,
         'data' => $re,
       ];
 
@@ -221,7 +223,6 @@ class HelloController extends Controller
       $input  = $request->input('find');
       $msg = 'search: ' . $input;
       $result = Person::search($input)->get();
-
       $data = [
         'input' => $input,
         'msg' => $msg,
