@@ -29,6 +29,6 @@ class Myjob implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $role
     }
 }
