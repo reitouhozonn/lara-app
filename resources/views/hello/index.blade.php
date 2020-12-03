@@ -44,6 +44,13 @@
   <li id="age"></li>
 </ul>
 
+<form class="" action="/hello" method="post">
+  @csrf
+  ID: <input type="text" name="id" id="id">
+  <input type="submit" name="" value="Click">
+</form>
+
+
 <h2>search!!</h2>
   <div class="">
     <form action="/hello" method="post">

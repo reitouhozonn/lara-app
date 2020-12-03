@@ -8,6 +8,9 @@ use App\person;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\MyClasses\MyService;
+// use App\Providers\MyJobProvider;
+use App\Jobs\MyJob;
+
 
 class HelloController extends Controller
 {
@@ -27,6 +30,12 @@ class HelloController extends Controller
 
     public function index()
     {
+      // if ($person != null) {
+      //   $qname = $person->id % 2 === 0 ? 'even' : 'add';
+      //   MyJob::dispatch($person)->onQueue($qname);
+      // }
+
+      // MyJob::dispatch();
       $msg = 'show people record.';
       $re = Person::get();
       $fields = Person::get()->fields();
@@ -220,15 +229,25 @@ class HelloController extends Controller
 
     public function send(Request $request)
     {
-      $input  = $request->input('find');
-      $msg = 'search: ' . $input;
-      $result = Person::search($input)->get();
-      $data = [
-        'input' => $input,
-        'msg' => $msg,
-        'data' => $result,
-      ];
-      return view('hello.index', $data);
+      $id = $request->input('id');
+      $person = Person::find($id);
+
+      dispatch(function() use ($person)
+      {
+        Storage::append('person_access_log.txt',
+        $person->all_data);
+      });
+      return redirect()->route('hello');
+
+      // $input  = $request->input('find');
+      // $msg = 'search: ' . $input;
+      // $result = Person::search($input)->get();
+      // $data = [
+      //   'input' => $input,
+      //   'msg' => $msg,
+      //   'data' => $result,
+      // ];
+      // return view('hello.index', $data);
     }
 
 
