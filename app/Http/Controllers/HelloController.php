@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\MyClasses\MyService;
 // use App\Providers\MyJobProvider;
 use App\Jobs\MyJob;
+use App\Events\PersonEvent;
 
 
 class HelloController extends Controller
@@ -74,7 +75,8 @@ class HelloController extends Controller
 
       // if ($id >= 0 ) {
       //   $msg = 'get name like "' . $id . '".';
-      //   $result = DB::table('people')->where('name', 'like', '%' . $id . '%')
+      //   $result = DB::table('people')->where(
+      // 'name', 'like', '%' . $id . '%')
       //     ->get();
       // }else {
       //   $msg = 'get people records.';
@@ -85,7 +87,8 @@ class HelloController extends Controller
         // $msg = 'get people records.';
         // $first = Person::paginate(3);
         // // dd($first);
-        // // $last = DB::table('people')->orderBy('id', 'desc')->first();
+        // // $last = DB::table('people')->orderBy('id',
+         // 'desc')->first();
         //
         // $data = [
         //   'msg' => $msg,
@@ -133,7 +136,8 @@ class HelloController extends Controller
 
         // $url = Storage::disk('public')->url($this->fname);
         // $size = Storage::disk('public')->size($this->fname);
-        // $modified = Storage::disk('public')->lastModified($this->fname);
+        // $modified = Storage::disk('public')->
+        // lastModified($this->fname);
         //
         // $sample_keys = ['url', 'size', 'modified'];
         // $sample_meta = [$url, $size, $modified];
@@ -232,12 +236,19 @@ class HelloController extends Controller
       $id = $request->input('id');
       $person = Person::find($id);
 
-      dispatch(function() use ($person)
-      {
-        Storage::append('person_access_log.txt',
-        $person->all_data);
-      });
-      return redirect()->route('hello');
+      event(new PersonEvent($person));
+      $data = [
+        'input' => '',
+        'msg' => 'id='. $id,
+        'data' => [$person],
+      ];
+      return view('hello.index', $data);
+      // dispatch(function() use ($person)
+      // {
+      //   Storage::append('person_access_log.txt',
+      //   $person->all_data);
+      // });
+      // return redirect()->route('hello');
 
       // $input  = $request->input('find');
       // $msg = 'search: ' . $input;
