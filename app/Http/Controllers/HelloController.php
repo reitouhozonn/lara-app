@@ -39,9 +39,11 @@ class HelloController extends Controller
       // MyJob::dispatch();
       $msg = 'show people record.';
       $re = Person::get();
+      // eval(\Psy\sh());
+      // dd($re);
       $fields = Person::get()->fields();
 
-      Person::get(['*'])->searchable();
+      // Person::get(['*'])->searchable();
 
       $data = [
         'input' => '',
