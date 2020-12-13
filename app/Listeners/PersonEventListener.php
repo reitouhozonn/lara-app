@@ -10,6 +10,7 @@ use App\Person;
 use Illuminate\Support\Facades\Storage;
 
 class PersonEventListener
+ // implements ShouldQueue
 {
     /**
      * Create the event listener.

@@ -51,7 +51,7 @@
 </form>
 
 
-<!-- <h2>search!!</h2>
+<h2>search!!</h2>
   <div class="">
     <form action="/hello" method="post">
       @csrf
@@ -68,15 +68,15 @@
     </tr>
     @endforeach
   </table>
-  <hr> -->
+  <hr>
 
-    <!-- <table border="1">
+     <table border="1">
       @foreach($data as $item)
       <tr>
         <th>{{$item->id}}</th>
         <td>{{$item->name_and_age}}</td>
       </tr>
       @endforeach
-    </table> -->
+    </table>
   </body>
 </html>

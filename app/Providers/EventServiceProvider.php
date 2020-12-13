@@ -18,14 +18,19 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
-        ],
-        'App\Events\PersonEvent' => [
-          'App\Listeners\PersonEventListener',
-        ],
+        ]
+        // 'App\Events\PersonEvent' => [
+        //   'App\Listeners\PersonEventListener',
+        // ],
     ];
     // protected $subscribe = [
     //   'App\Listeners\MyEventSubscriber',
     // ];
+
+      public function shouldDiscoverEvents()
+      {
+        return true;
+      }
     /**
      * Register any events for your application.
      *
