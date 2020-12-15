@@ -1,0 +1,27 @@
+[] This is Mycmd.sh.
+[] This is Mycmd.sh.
+[] This is Mycmd.sh.
+[] This is Mycmd.sh.
+[] This is Mycmd.sh.
+[2020/12/14
+04:11:37 PM] This is Mycmd.sh.
+[2020/12/1404:12:23 PM] This is Mycmd.sh.
+[date '+%Y/%m/%d%r')] This is Mycmd.sh.
+[2020/12/1404:12:59 PM] This is Mycmd.sh.
+[2020/12/1404:29:16 PM] This is Mycmd.sh.
+[2020/12/1404:29:57 PM] This is Mycmd.sh.
+[2020/12/1404:33:07 PM] This is Mycmd.sh.
+[2020/12/1404:33:18 PM] This is Mycmd.sh.
+[2020/12/1404:37:03 PM] This is Mycmd.sh.
+ This is Mycmd.shphp artisan schedule:run
+ This is Mycmd.shecho  This is Mycmd.shphp artisan schedule:run >> mycmd_log.txt
+This is Mycmd.shphp artisan schedule:run
+[2020/12/1405:01:26 PM] This is Mycmd.sh!!
+[2020/12/1405:01:35 PM] This is Mycmd.sh!!
+[2020/12/1405:02:07 PM] This is Mycmd.sh!!
+[2020/12/1405:02:15 PM] This is Mycmd.sh!!
+[2020/12/1405:21:11 PM] This is Mycmd.sh!!
+[2020/12/1405:22:02 PM] This is Mycmd.sh!!
+[2020/12/1405:25:07 PM] This is Mycmd.sh!!
+[2020/12/1405:32:09 PM] This is Mycmd.sh!!
+[2020/12/1405:33:19 PM] This is Mycmd.sh!!
