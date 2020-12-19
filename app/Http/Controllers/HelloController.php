@@ -31,6 +31,8 @@ class HelloController extends Controller
 
     public function index()
     {
+
+
       // if ($person != null) {
       //   $qname = $person->id % 2 === 0 ? 'even' : 'add';
       //   MyJob::dispatch($person)->onQueue($qname);
@@ -39,11 +41,7 @@ class HelloController extends Controller
       // MyJob::dispatch();
       $msg = 'show people record.';
       $re = Person::get();
-      // eval(\Psy\sh());
-      // dd($re);
       $fields = Person::get()->fields();
-
-      // Person::get(['*'])->searchable();
 
       $data = [
         'input' => '',

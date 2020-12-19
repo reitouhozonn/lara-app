@@ -34,9 +34,10 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $count = Person::all()->count();
         $id = rand(0, $count) + 1;
-        $obj = new ScheduleObj($id);
-        $schedule->call($obj);
-
+        // $obj = new ScheduleObj($id);
+        // $schedule->call($obj);
+        // $schedule->call(new MyJob($id));
+        $schedule->job(new MyJob($id));
 
         // $schedule->exec('bash ./mycmd.sh');
         // $schedule->command('queue:work --stop-when-empty');

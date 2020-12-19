@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/hello', 'HelloController@index')->name('hello');
 Route::get('/hello/{person}', 'HelloController@index');
 Route::post('/hello', 'HelloController@send');
+// Route::get('/hello/react', 'HelloController@react')->name('react');
 // Route::get('/hello/{id}', 'HelloController@index');
 // Route::post('/hello', 'HelloController@index');
 Route::get('/hello/other', 'HelloController@other');
@@ -28,6 +29,9 @@ Route::get('/hello/json', 'HelloController@json');
 Route::get('/hello/json/{id}', 'HelloController@json');
 
 
+
+
+Route::get('/react', 'ReactController@index');
 // Route::get('/hello/{msg}', 'HelloController@other');
 // Route::post('/hello/other', 'HelloController@other');
 // Route::get('/sample', 'Sample\SampleController@index')->name('sample');
