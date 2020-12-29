@@ -11,7 +11,9 @@
     <h1 class="py-2 alert-primary row justify-content-center">Hello/react</h1>
     <p class="py-4 center-block row justify-content-center">{{$msg}}</p>
 
-    <div id="example"></div>
+    <!-- <div id="example"></div> -->
+
+    <div id="mycomponent"></div>
 
     <script src="{{asset('/js/app.js')}}"></script>
   </body>
