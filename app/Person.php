@@ -57,8 +57,8 @@ class Person extends Model
   public function setAllDataAttribute(Array $value)
   {
     $this->attributes['name'] = $value[0];
-    $this->attributes['mail'] = $value[1];
-    $this->attributes['age']  = $value[2];
+    $this->attributes['age'] = $value[1];
+    $this->attributes['mail']  = $value[2];
   }
 
 
