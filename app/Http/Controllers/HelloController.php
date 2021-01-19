@@ -11,6 +11,7 @@ use App\MyClasses\MyService;
 // use App\Providers\MyJobProvider;
 use App\Jobs\MyJob;
 use App\Events\PersonEvent;
+use Illuminate\support\Facades\Artisan;
 
 
 class HelloController extends Controller
@@ -271,6 +272,14 @@ class HelloController extends Controller
           return Person::find($id)->toJson();
         }
 
+      }
+
+      public function clear()
+      {
+        Artisan::call('cashe:clear');
+        Artisan::call('event:clear');
+
+        return redirect()->route('hello');
       }
 
     public function other()

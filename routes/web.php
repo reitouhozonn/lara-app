@@ -27,7 +27,7 @@ Route::get('/hello/other', 'HelloController@other');
 
 Route::get('/hello/json', 'HelloController@json');
 Route::get('/hello/json/{id}', 'HelloController@json');
-
+Route::get('/hello/clear', 'HelloController@clear');
 
 
 
